@@ -93,7 +93,7 @@ export const Home = () => {
               <Shield className="hero-tag-icon" />
               <span>{HERO_SLIDES[currentSlide].badge}</span>
             </div>
-            <h2 style={{ minHeight: '110px' }}>
+            <h2>
               {HERO_SLIDES[currentSlide].title.split(" ").map((word, i) => {
                 if (word.includes("Empty") || word.includes("Today!") || word.includes("Agricultural") || word.includes("Farm") || word.includes("Residential") || word.includes("Approved")) {
                   return <span key={i}>{word} </span>;
@@ -104,49 +104,6 @@ export const Home = () => {
             <p className="hero-subtitle">
               {HERO_SLIDES[currentSlide].subtitle}
             </p>
-
-            {/* In-hero Bullet Items */}
-            <div className="hero-bullet-grid">
-              <div className="bullet-item">
-                <div className="bullet-icon-box">
-                  <ShieldCheck className="bullet-icon" />
-                </div>
-                <div className="bullet-text-wrapper">
-                  <h4>Verified Properties</h4>
-                  <p>100% Legal Verified</p>
-                </div>
-              </div>
-
-              <div className="bullet-item">
-                <div className="bullet-icon-box">
-                  <MapPin className="bullet-icon" />
-                </div>
-                <div className="bullet-text-wrapper">
-                  <h4>Prime Locations</h4>
-                  <p>Best Locations</p>
-                </div>
-              </div>
-
-              <div className="bullet-item">
-                <div className="bullet-icon-box">
-                  <BadgePercent className="bullet-icon" />
-                </div>
-                <div className="bullet-text-wrapper">
-                  <h4>Best Price</h4>
-                  <p>Market Competitive</p>
-                </div>
-              </div>
-
-              <div className="bullet-item">
-                <div className="bullet-icon-box">
-                  <Headset className="bullet-icon" />
-                </div>
-                <div className="bullet-text-wrapper">
-                  <h4>Expert Support</h4>
-                  <p>Always Available</p>
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Hero Right: Search Widget */}
@@ -341,7 +298,7 @@ export const Home = () => {
           </div>
 
           <div className="plots-grid">
-            {plotsList.slice(0, 4).map((plot) => {
+            {plotsList.slice(0, 6).map((plot) => {
               const isSaved = savedPlots.includes(plot.id);
               return (
                 <div key={plot.id} className="plot-card">
