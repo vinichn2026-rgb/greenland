@@ -12,6 +12,7 @@ import Contact from './pages/Contact';
 import TermsAndConditions from './pages/TermsAndConditions';
 import LimitationOfLiability from './pages/LimitationOfLiability';
 import WhyUs from './pages/WhyUs';
+import Register from './pages/Register';
 import IceSheet from './pages/IceSheet';
 import Culture from './pages/Culture';
 import PostPropertyModal from './components/PostPropertyModal';
@@ -42,6 +43,8 @@ const AppLayout = () => {
         return <LimitationOfLiability />;
       case 'whyus':
         return <WhyUs />;
+      case 'register':
+        return <Register />;
       case 'icesheet':
         return <IceSheet />;
       case 'culture':

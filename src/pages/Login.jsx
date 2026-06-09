@@ -20,15 +20,33 @@ export const Login = () => {
     setShowPassword(prev => !prev);
   };
 
-  const handleLoginSubmit = (e) => {
+  const handleLoginSubmit = async (e) => {
     e.preventDefault();
     if (!email.trim() || !password.trim()) {
       setError('Please fill in both Email and Password fields.');
       return;
     }
 
-    alert(`Successfully logged in as: ${email}`);
-    setActivePage('home'); // Redirect back to Home page
+    try {
+      const res = await fetch('/api/users/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email.trim(), password }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.error || 'Login failed. Please check your credentials.');
+        return;
+      }
+
+      // Successful login
+      alert(`✅ Welcome back, ${data.name || data.email}!`);
+      setActivePage('home');
+    } catch (err) {
+      setError('Server error. Please make sure the backend is running.');
+    }
   };
 
   return (
@@ -203,7 +221,13 @@ export const Login = () => {
 
           {/* Register link */}
           <div style={{ textAlign: 'center', marginTop: '2rem', fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-grey)' }}>
-            Don't have an account? <span style={{ color: 'var(--primary-green)', cursor: 'pointer' }} onClick={() => alert("Register page coming soon...")}>Register</span>
+            Don't have an account?{' '}
+            <span
+              style={{ color: 'var(--primary-green)', cursor: 'pointer' }}
+              onClick={() => setActivePage('register')}
+            >
+              Register
+            </span>
           </div>
 
         </div>

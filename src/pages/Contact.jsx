@@ -18,6 +18,8 @@ export const Contact = () => {
 
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -61,22 +63,34 @@ export const Contact = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (validateForm()) {
-      setSubmitted(true);
-      setFormData({
-        name: '',
-        email: '',
-        mobile: '',
-        subject: '',
-        message: ''
+    setSubmitError('');
+    if (!validateForm()) return;
+
+    setSubmitting(true);
+    try {
+      const res = await fetch('/api/contacts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
       });
-      setTimeout(() => {
-        setSubmitted(false);
-      }, 5000); // Hide success alert after 5s
+
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || 'Submission failed');
+      }
+
+      setSubmitted(true);
+      setFormData({ name: '', email: '', mobile: '', subject: '', message: '' });
+      setTimeout(() => setSubmitted(false), 5000);
+    } catch (err) {
+      setSubmitError(err.message || 'Something went wrong. Please try again.');
+    } finally {
+      setSubmitting(false);
     }
   };
+
 
   return (
     <div className="contact-page-container fade-in">
@@ -217,7 +231,13 @@ export const Contact = () => {
 
             {submitted && (
               <div style={{ backgroundColor: '#f0fdf4', color: '#15803d', border: '1px solid #bbf7d0', padding: '1rem', borderRadius: '8px', fontSize: '0.85rem', fontWeight: 600, marginBottom: '1.5rem' }}>
-                Thank you! Your message has been sent successfully. We will get back to you shortly.
+                ✅ Thank you! Your message has been saved to our database. We will get back to you shortly.
+              </div>
+            )}
+
+            {submitError && (
+              <div style={{ backgroundColor: '#fef2f2', color: '#ef4444', border: '1px solid #fee2e2', padding: '1rem', borderRadius: '8px', fontSize: '0.85rem', fontWeight: 600, marginBottom: '1.5rem' }}>
+                ❌ {submitError}
               </div>
             )}
 
@@ -303,9 +323,11 @@ export const Contact = () => {
               {/* Submit Button */}
               <button 
                 type="submit" 
-                className="contact-submit-btn" 
+                className="contact-submit-btn"
+                disabled={submitting}
+                style={{ opacity: submitting ? 0.7 : 1, cursor: submitting ? 'not-allowed' : 'pointer' }}
               >
-                <span>Send Message</span>
+                <span>{submitting ? 'Sending...' : 'Send Message'}</span>
               </button>
 
             </form>

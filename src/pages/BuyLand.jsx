@@ -13,6 +13,8 @@ export const BuyLand = () => {
     savedPlots, 
     toggleSavePlot,
     plotsList,
+    plotsLoading,
+    plotsError,
     setSelectedPlotId
   } = useContext(AppContext);
 
@@ -312,7 +314,16 @@ export const BuyLand = () => {
           </div>
 
           <div className="listings-vertical-list">
-            {paginatedPlots.length === 0 ? (
+            {plotsLoading ? (
+              <div className="glass-panel" style={{ backgroundColor: '#fff', textAlign: 'center', padding: '3rem', border: '1px solid #e2e8f0' }}>
+                <p style={{ fontWeight: 600, color: '#64748b' }}>⏳ Loading listings from database...</p>
+              </div>
+            ) : plotsError ? (
+              <div className="glass-panel" style={{ backgroundColor: '#fef2f2', textAlign: 'center', padding: '3rem', border: '1px solid #fee2e2' }}>
+                <p style={{ fontWeight: 600, color: '#ef4444' }}>❌ {plotsError}</p>
+                <p style={{ fontSize: '0.85rem', color: '#64748b', marginTop: '0.5rem' }}>Make sure MySQL is running and the backend server is started.</p>
+              </div>
+            ) : paginatedPlots.length === 0 ? (
               <div className="glass-panel" style={{ backgroundColor: '#fff', textAlign: 'center', padding: '3rem', border: '1px solid #e2e8f0' }}>
                 <p style={{ fontWeight: 600, color: '#64748b' }}>No properties match your active filter settings.</p>
                 <button className="filter-reset-btn" style={{ marginTop: '1rem' }} onClick={handleReset}>Clear All Filters</button>
