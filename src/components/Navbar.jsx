@@ -3,6 +3,7 @@ import { AppContext } from '../context/AppContext';
 import {
   Sprout, Heart, Bell, PlusCircle, MapPin, Phone, Mail
 } from 'lucide-react';
+import logoImg from '../assets/logo.png';
 
 export const Navbar = () => {
   const {
@@ -67,11 +68,7 @@ export const Navbar = () => {
       {/* Main Curved White Navbar */}
       <nav className="navbar">
         <div className="nav-logo-box" onClick={() => setActivePage('home')}>
-          <Sprout className="nav-logo-icon" />
-          <div className="logo-text-wrapper">
-            <h1>GreenLand</h1>
-            <p>Buy Land. Build Future.</p>
-          </div>
+          <img src={logoImg} alt="Thennattu Nilam Logo" className="nav-logo-img" style={{ height: '170px', width: 'auto', objectFit: 'contain' }} />
         </div>
 
         <div className="nav-menu">

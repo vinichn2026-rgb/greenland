@@ -398,7 +398,7 @@ export const Home = () => {
         <div className="content-right">
           <div className="why-choose-card">
             <div className="why-header">
-              <h3>Why Choose GreenLand?</h3>
+              <h3>Why Choose Thennattu Nilam?</h3>
               <div className="gold-medallion" title="Top Rated Platform">
                 <AwardIcon style={{ width: '18px', height: '18px' }} />
               </div>
