@@ -1,14 +1,14 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
-import { 
+import {
   Sprout, Heart, Bell, PlusCircle, MapPin, Phone, Mail
 } from 'lucide-react';
 
 export const Navbar = () => {
-  const { 
-    activePage, 
-    setActivePage, 
-    savedPlots, 
+  const {
+    activePage,
+    setActivePage,
+    savedPlots,
     notificationsCount,
     setPostPropertyModalOpen
   } = useContext(AppContext);
@@ -37,7 +37,7 @@ export const Navbar = () => {
             {/* Facebook inline SVG */}
             <button className="social-icon-btn">
               <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor">
-                <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/>
+                <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z" />
               </svg>
             </button>
             {/* Instagram inline SVG */}
@@ -51,13 +51,13 @@ export const Navbar = () => {
             {/* Youtube inline SVG */}
             <button className="social-icon-btn">
               <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor">
-                <path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.518 3.545 12 3.545 12 3.545s-7.518 0-9.388.508a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.87.508 9.388.508 9.388.508s7.518 0 9.388-.508a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                <path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.518 3.545 12 3.545 12 3.545s-7.518 0-9.388.508a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.87.508 9.388.508 9.388.508s7.518 0 9.388-.508a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
               </svg>
             </button>
             {/* WhatsApp/Chat inline SVG */}
             <button className="social-icon-btn">
               <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor">
-                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.5-5.739-1.446L0 24zm6.59-4.846c1.6.95 3.497 1.45 5.421 1.451 5.58 0 10.121-4.527 10.124-10.099.002-2.7-1.043-5.237-2.946-7.14C17.34 1.46 14.81 .413 12.11.413 6.533.413 1.995 4.939 1.992 10.51c-.001 1.922.502 3.8 1.458 5.4l-.956 3.492 3.572-.938-.009-.008z"/>
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.5-5.739-1.446L0 24zm6.59-4.846c1.6.95 3.497 1.45 5.421 1.451 5.58 0 10.121-4.527 10.124-10.099.002-2.7-1.043-5.237-2.946-7.14C17.34 1.46 14.81 .413 12.11.413 6.533.413 1.995 4.939 1.992 10.51c-.001 1.922.502 3.8 1.458 5.4l-.956 3.492 3.572-.938-.009-.008z" />
               </svg>
             </button>
           </div>
@@ -75,37 +75,37 @@ export const Navbar = () => {
         </div>
 
         <div className="nav-menu">
-          <button 
+          <button
             className={`nav-link ${activePage === 'home' ? 'active' : ''}`}
             onClick={() => setActivePage('home')}
           >
             <span>Home</span>
           </button>
-          <button 
+          <button
             className={`nav-link ${activePage === 'buyland' ? 'active' : ''}`}
             onClick={() => setActivePage('buyland')}
           >
             <span>Buy Land</span>
           </button>
-          <button 
+          <button
             className={`nav-link ${activePage === 'sellland' ? 'active' : ''}`}
             onClick={() => setActivePage('sellland')}
           >
             <span>Sell Land</span>
           </button>
-          <button 
+          <button
             className={`nav-link ${activePage === 'aboutus' ? 'active' : ''}`}
             onClick={() => setActivePage('aboutus')}
           >
             <span>About Us</span>
           </button>
-          <button 
+          <button
             className={`nav-link ${activePage === 'whyus' ? 'active' : ''}`}
             onClick={() => setActivePage('whyus')}
           >
             <span>Why Us</span>
           </button>
-          <button 
+          <button
             className={`nav-link ${activePage === 'contact' ? 'active' : ''}`}
             onClick={() => setActivePage('contact')}
           >

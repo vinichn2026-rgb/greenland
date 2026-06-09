@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
-import { 
+import {
   ChevronRight, ShieldCheck, TrendingUp, FileText, Check, X, Search, Compass, MapPin
 } from 'lucide-react';
 
@@ -67,7 +67,7 @@ export const WhyUs = () => {
 
   return (
     <div className="terms-page-container fade-in" style={{ paddingBottom: '4rem' }}>
-      
+
       {/* Breadcrumbs Header */}
       <header className="buyland-header" style={{ marginTop: '1.5rem', marginBottom: '2.5rem' }}>
         <div className="breadcrumb-nav" style={{ marginBottom: '0.75rem' }}>
@@ -213,7 +213,7 @@ export const WhyUs = () => {
 
         <div className="why-timeline-wrapper">
           <div className="why-timeline-line"></div>
-          
+
           <div className="why-timeline-grid">
             {journeySteps.map((step, index) => {
               const StepIcon = step.icon;
@@ -241,13 +241,13 @@ export const WhyUs = () => {
           Browse our collection of DTCP-approved residential plots and agricultural farm lands in Chennai and prime Tamil Nadu regions.
         </p>
         <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <button 
+          <button
             className="why-cta-btn-primary"
             onClick={() => setActivePage('buyland')}
           >
             Browse Properties
           </button>
-          <button 
+          <button
             className="why-cta-btn-secondary"
             onClick={() => setActivePage('contact')}
           >

@@ -97,7 +97,7 @@ export const Register = () => {
             <h2 className="register-left-title">
               Create Your <span style={{ color: 'var(--primary-green)' }}>Account</span>
             </h2>
-            <p className="register-left-sub">Join GreenLand today and unlock amazing features.</p>
+            <p className="register-left-sub">Join Thennattu Nilam today and unlock amazing features.</p>
 
             <div className="register-features-list">
               {features.map(({ Icon, title, desc }) => (

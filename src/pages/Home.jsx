@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { AppContext } from '../context/AppContext';
-import { 
-  Shield, MapPin, BadgePercent, Headset, Home as HomeIcon, Tag, 
-  Search, ShieldCheck, FileCheck, Droplet, Zap, Award, 
+import {
+  Shield, MapPin, BadgePercent, Headset, Home as HomeIcon, Tag,
+  Search, ShieldCheck, FileCheck, Droplet, Zap, Award,
   ArrowRight, Heart, Compass, MessageSquare, Award as AwardIcon, CheckCircle2,
   Sprout
 } from 'lucide-react';
@@ -62,11 +62,11 @@ export const Home = () => {
 
   return (
     <div className="page-container" style={{ gap: '0' }}>
-      
+
       {/* Hero Wrapper containing left content & right search widget */}
-      <section 
+      <section
         className="hero-wrapper"
-        style={{ 
+        style={{
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.5)), url('${HERO_SLIDES[currentSlide].image}')`,
           transition: 'background-image 0.5s ease-in-out'
         }}
@@ -141,14 +141,14 @@ export const Home = () => {
           <div className="hero-right">
             <div className="search-widget-card">
               <div className="widget-tabs">
-                <button 
+                <button
                   className={`widget-tab-btn ${activeTab === 'buy' ? 'active' : ''}`}
                   onClick={() => setActiveTab('buy')}
                 >
                   <HomeIcon className="tab-icon" />
                   <span>Buy Land</span>
                 </button>
-                <button 
+                <button
                   className={`widget-tab-btn ${activeTab === 'sell' ? 'active' : ''}`}
                   onClick={() => setActiveTab('sell')}
                 >
@@ -164,7 +164,7 @@ export const Home = () => {
                     <label>Location</label>
                     <div className="input-container">
                       <MapPin className="input-icon" />
-                      <select 
+                      <select
                         className="form-input"
                         value={searchQuery.location}
                         onChange={(e) => handleInputChange('location', e.target.value)}
@@ -183,7 +183,7 @@ export const Home = () => {
                   {/* Land Type */}
                   <div className="form-field">
                     <label>Land Type</label>
-                    <select 
+                    <select
                       className="form-input form-input-no-icon"
                       value={searchQuery.landType}
                       onChange={(e) => handleInputChange('landType', e.target.value)}
@@ -198,7 +198,7 @@ export const Home = () => {
                   {/* Budget */}
                   <div className="form-field">
                     <label>Budget</label>
-                    <select 
+                    <select
                       className="form-input form-input-no-icon"
                       value={searchQuery.budget}
                       onChange={(e) => handleInputChange('budget', e.target.value)}
@@ -215,17 +215,17 @@ export const Home = () => {
                   <div className="form-field field-full">
                     <label>Land Area (sq.ft)</label>
                     <div className="area-range-inputs">
-                      <input 
-                        type="number" 
-                        placeholder="Min Area" 
+                      <input
+                        type="number"
+                        placeholder="Min Area"
                         className="form-input form-input-no-icon"
                         value={searchQuery.minArea}
                         onChange={(e) => handleInputChange('minArea', e.target.value)}
                       />
                       <span>-</span>
-                      <input 
-                        type="number" 
-                        placeholder="Max Area" 
+                      <input
+                        type="number"
+                        placeholder="Max Area"
                         className="form-input form-input-no-icon"
                         value={searchQuery.maxArea}
                         onChange={(e) => handleInputChange('maxArea', e.target.value)}
@@ -336,19 +336,19 @@ export const Home = () => {
                   <div className="plot-img-box">
                     <img src={plot.image} alt={plot.title} className="plot-img" />
                     <span className={`plot-tag-badge ${plot.tagClass}`}>{plot.tag}</span>
-                    <button 
+                    <button
                       className={`plot-save-btn ${isSaved ? 'saved' : ''}`}
                       onClick={() => toggleSavePlot(plot.id)}
                       title={isSaved ? "Remove from saved" : "Save plot"}
                       style={{ top: '0.75rem', right: '0.75rem' }}
                     >
-                      <Heart 
-                        style={{ 
-                          width: '16px', 
-                          height: '16px', 
-                          fill: isSaved ? '#ef4444' : 'none', 
-                          color: isSaved ? '#ef4444' : 'currentColor' 
-                        }} 
+                      <Heart
+                        style={{
+                          width: '16px',
+                          height: '16px',
+                          fill: isSaved ? '#ef4444' : 'none',
+                          color: isSaved ? '#ef4444' : 'currentColor'
+                        }}
                       />
                     </button>
                   </div>
@@ -377,7 +377,7 @@ export const Home = () => {
 
                     <div className="plot-footer">
                       <span className="plot-price">{plot.price}</span>
-                      <button 
+                      <button
                         className="view-details-btn"
                         onClick={() => {
                           setSelectedPlotId(plot.id);
@@ -460,7 +460,7 @@ export const Home = () => {
       </main>
 
       {/* WhatsApp Floating Action Button */}
-      <button 
+      <button
         className="whatsapp-float-btn"
         onClick={() => window.open('https://wa.me/919942620101', '_blank')}
       >

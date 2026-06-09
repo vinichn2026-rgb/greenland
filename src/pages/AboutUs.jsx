@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
-import { 
-  ChevronRight, Target, Eye, Gem, Users, MapPin, Award, 
-  Layout, CheckCircle2, Shield, Headset, BadgePercent 
+import {
+  ChevronRight, Target, Eye, Gem, Users, MapPin, Award,
+  Layout, CheckCircle2, Shield, Headset, BadgePercent
 } from 'lucide-react';
 
 export const AboutUs = () => {
@@ -10,7 +10,7 @@ export const AboutUs = () => {
 
   return (
     <div className="buyland-page-wrapper fade-in" style={{ paddingBottom: '4rem' }}>
-      
+
       {/* Breadcrumbs Header */}
       <header className="buyland-header" style={{ marginBottom: '2rem' }}>
         <div className="breadcrumb-nav" style={{ marginBottom: '0.75rem' }}>
@@ -89,7 +89,7 @@ export const AboutUs = () => {
 
       {/* Mission, Vision, Values Section */}
       <section className="about-pillars-panel glass-panel" style={{ backgroundColor: '#fff', border: '1px solid #e2e8f0', borderRadius: '14px', padding: '2.5rem', display: 'grid', gridTemplateColumns: '1fr 1fr 1.2fr', gap: '2.5rem', marginBottom: '4rem' }}>
-        
+
         {/* Mission */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', borderRight: '1px solid #e2e8f0', paddingRight: '1.5rem' }}>
           <div className="why-icon-box" style={{ width: '48px', height: '48px' }}>
@@ -118,7 +118,7 @@ export const AboutUs = () => {
             <Gem style={{ width: '22px', height: '22px' }} />
           </div>
           <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0f172a', marginBottom: '0.25rem' }}>Our Values</h3>
-          
+
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem', fontSize: '0.85rem', color: 'var(--text-grey)' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 600 }}>
               <CheckCircle2 style={{ width: '15px', height: '15px', color: 'var(--secondary-green)' }} />
@@ -142,7 +142,7 @@ export const AboutUs = () => {
 
       {/* Trust Bottom Bar Highlights */}
       <section className="glass-panel" style={{ backgroundColor: '#fff', border: '1px solid #e2e8f0', borderRadius: '12px', padding: '1.25rem 2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1.5rem' }}>
-        
+
         {/* Item 1 */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
           <Shield style={{ color: 'var(--light-green)', width: '22px', height: '22px' }} />

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { AppContext } from '../context/AppContext';
-import { 
+import {
   ChevronRight, Phone, Mail, MapPin, Clock
 } from 'lucide-react';
 
@@ -39,7 +39,7 @@ export const Contact = () => {
   const validateForm = () => {
     const newErrors = {};
     if (!formData.name.trim()) newErrors.name = 'Your name is required';
-    
+
     if (!formData.email.trim()) {
       newErrors.email = 'Email address is required';
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
@@ -94,7 +94,7 @@ export const Contact = () => {
 
   return (
     <div className="contact-page-container fade-in">
-      
+
       {/* Breadcrumbs Header */}
       <header className="buyland-header" style={{ marginTop: '1.5rem', marginBottom: '2rem' }}>
         <div className="breadcrumb-nav" style={{ marginBottom: '0.75rem' }}>
@@ -106,7 +106,7 @@ export const Contact = () => {
 
       {/* Main Contact Grid */}
       <div className="contact-main-grid">
-        
+
         {/* Left Side: Contact Information and Social Links */}
         <div className="contact-left-col">
           <div className="contact-title-section" style={{ marginBottom: '2rem' }}>
@@ -125,7 +125,7 @@ export const Contact = () => {
 
             {/* Info Channels */}
             <div className="contact-channels">
-              
+
               {/* Phone Channel */}
               <div className="channel-row">
                 <div className="channel-icon-box">
@@ -182,21 +182,21 @@ export const Contact = () => {
               <h4 style={{ fontSize: '0.95rem', fontWeight: 800, color: '#0f172a', marginBottom: '0.75rem' }}>Follow Us</h4>
               <div className="contact-social-row">
                 {/* Facebook circular button */}
-                <a 
-                  href="https://facebook.com" 
-                  target="_blank" 
-                  rel="noreferrer" 
+                <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noreferrer"
                   className="contact-social-btn"
                 >
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                    <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/>
+                    <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z" />
                   </svg>
                 </a>
                 {/* Instagram circular button */}
-                <a 
-                  href="https://instagram.com" 
-                  target="_blank" 
-                  rel="noreferrer" 
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noreferrer"
                   className="contact-social-btn"
                 >
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -206,14 +206,14 @@ export const Contact = () => {
                   </svg>
                 </a>
                 {/* Youtube circular button */}
-                <a 
-                  href="https://youtube.com" 
-                  target="_blank" 
-                  rel="noreferrer" 
+                <a
+                  href="https://youtube.com"
+                  target="_blank"
+                  rel="noreferrer"
                   className="contact-social-btn"
                 >
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                    <path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.518 3.545 12 3.545 12 3.545s-7.518 0-9.388.508a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.87.508 9.388.508 9.388.508s7.518 0 9.388-.508a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    <path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.518 3.545 12 3.545 12 3.545s-7.518 0-9.388.508a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.87.508 9.388.508 9.388.508s7.518 0 9.388-.508a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
                   </svg>
                 </a>
               </div>
@@ -224,36 +224,30 @@ export const Contact = () => {
 
         {/* Right Side: Message Form and Map Visuals */}
         <div className="contact-right-col" style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-          
+
           {/* Send Us a Message Card */}
           <div className="contact-form-card">
             <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: '#0f172a', marginBottom: '1.25rem' }}>Send Us a Message</h3>
 
             {submitted && (
               <div style={{ backgroundColor: '#f0fdf4', color: '#15803d', border: '1px solid #bbf7d0', padding: '1rem', borderRadius: '8px', fontSize: '0.85rem', fontWeight: 600, marginBottom: '1.5rem' }}>
-                ✅ Thank you! Your message has been saved to our database. We will get back to you shortly.
-              </div>
-            )}
-
-            {submitError && (
-              <div style={{ backgroundColor: '#fef2f2', color: '#ef4444', border: '1px solid #fee2e2', padding: '1rem', borderRadius: '8px', fontSize: '0.85rem', fontWeight: 600, marginBottom: '1.5rem' }}>
-                ❌ {submitError}
+                Thank you! Your message has been sent successfully. We will get back to you shortly.
               </div>
             )}
 
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-              
+
               {/* Row 1: Name and Email */}
               <div className="contact-form-row-2col">
                 <div className="form-group" style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
                   <label htmlFor="name" style={{ fontSize: '0.8rem', fontWeight: 700, color: '#0f172a' }}>Your Name</label>
-                  <input 
-                    type="text" 
-                    id="name" 
-                    name="name" 
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    placeholder="Enter your name" 
+                    placeholder="Enter your name"
                     className={`contact-input ${errors.name ? 'error' : ''}`}
                   />
                   {errors.name && <span style={{ fontSize: '0.75rem', color: '#ef4444', fontWeight: 500 }}>{errors.name}</span>}
@@ -261,13 +255,13 @@ export const Contact = () => {
 
                 <div className="form-group" style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
                   <label htmlFor="email" style={{ fontSize: '0.8rem', fontWeight: 700, color: '#0f172a' }}>Your Email</label>
-                  <input 
-                    type="email" 
-                    id="email" 
-                    name="email" 
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    placeholder="Enter your email" 
+                    placeholder="Enter your email"
                     className={`contact-input ${errors.email ? 'error' : ''}`}
                   />
                   {errors.email && <span style={{ fontSize: '0.75rem', color: '#ef4444', fontWeight: 500 }}>{errors.email}</span>}
@@ -277,13 +271,13 @@ export const Contact = () => {
               {/* Row 2: Mobile Number */}
               <div className="form-group" style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
                 <label htmlFor="mobile" style={{ fontSize: '0.8rem', fontWeight: 700, color: '#0f172a' }}>Mobile Number</label>
-                <input 
-                  type="text" 
-                  id="mobile" 
-                  name="mobile" 
+                <input
+                  type="text"
+                  id="mobile"
+                  name="mobile"
                   value={formData.mobile}
                   onChange={handleInputChange}
-                  placeholder="Enter your mobile number" 
+                  placeholder="Enter your mobile number"
                   className={`contact-input ${errors.mobile ? 'error' : ''}`}
                 />
                 {errors.mobile && <span style={{ fontSize: '0.75rem', color: '#ef4444', fontWeight: 500 }}>{errors.mobile}</span>}
@@ -292,13 +286,13 @@ export const Contact = () => {
               {/* Row 3: Subject */}
               <div className="form-group" style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
                 <label htmlFor="subject" style={{ fontSize: '0.8rem', fontWeight: 700, color: '#0f172a' }}>Subject</label>
-                <input 
-                  type="text" 
-                  id="subject" 
-                  name="subject" 
+                <input
+                  type="text"
+                  id="subject"
+                  name="subject"
                   value={formData.subject}
                   onChange={handleInputChange}
-                  placeholder="Enter subject" 
+                  placeholder="Enter subject"
                   className={`contact-input ${errors.subject ? 'error' : ''}`}
                 />
                 {errors.subject && <span style={{ fontSize: '0.75rem', color: '#ef4444', fontWeight: 500 }}>{errors.subject}</span>}
@@ -307,13 +301,13 @@ export const Contact = () => {
               {/* Row 4: Message */}
               <div className="form-group" style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
                 <label htmlFor="message" style={{ fontSize: '0.8rem', fontWeight: 700, color: '#0f172a' }}>Message</label>
-                <textarea 
-                  id="message" 
-                  name="message" 
+                <textarea
+                  id="message"
+                  name="message"
                   rows="5"
                   value={formData.message}
                   onChange={handleInputChange}
-                  placeholder="Type your message..." 
+                  placeholder="Type your message..."
                   className={`contact-input ${errors.message ? 'error' : ''}`}
                   style={{ minHeight: '120px', resize: 'vertical', fontFamily: 'inherit' }}
                 />
@@ -321,13 +315,11 @@ export const Contact = () => {
               </div>
 
               {/* Submit Button */}
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 className="contact-submit-btn"
-                disabled={submitting}
-                style={{ opacity: submitting ? 0.7 : 1, cursor: submitting ? 'not-allowed' : 'pointer' }}
               >
-                <span>{submitting ? 'Sending...' : 'Send Message'}</span>
+                <span>Send Message</span>
               </button>
 
             </form>
@@ -336,12 +328,12 @@ export const Contact = () => {
           {/* Location Map Card */}
           <div className="contact-map-card">
             {/* Map image background */}
-            <img 
-              src="/images/mock_map.png" 
-              alt="GreenLand Office Location Map" 
+            <img
+              src="/images/mock_map.png"
+              alt="GreenLand Office Location Map"
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
             />
-            
+
             {/* Floating Marker Card */}
             <div className="floating-map-badge">
               {/* Red marker dot */}

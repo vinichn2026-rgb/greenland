@@ -64,15 +64,15 @@ export const Footer = () => {
       <div className="footer-re-bottom">
         <span>© {new Date().getFullYear()} GreenLand Land Platform. All rights reserved.</span>
         <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-          <button 
-            onClick={() => setActivePage('terms')} 
+          <button
+            onClick={() => setActivePage('terms')}
             style={{ background: 'none', border: 'none', color: '#64748b', cursor: 'pointer', fontFamily: 'inherit', fontSize: 'inherit', padding: 0 }}
           >
             Privacy Policy
           </button>
           <span>|</span>
-          <button 
-            onClick={() => setActivePage('terms')} 
+          <button
+            onClick={() => setActivePage('terms')}
             style={{ background: 'none', border: 'none', color: '#64748b', cursor: 'pointer', fontFamily: 'inherit', fontSize: 'inherit', padding: 0 }}
           >
             Terms & Conditions

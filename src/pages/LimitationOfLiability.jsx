@@ -14,7 +14,7 @@ export const LimitationOfLiability = () => {
       id: 1,
       title: 'Introduction',
       icon: ShieldCheck,
-      content: 'This Limitation of Liability section describes the situations in which GreenLand and its team will not be liable for any losses or damages.'
+      content: 'This Limitation of Liability section describes the situations in which Thennattu Nilam and its team will not be liable for any losses or damages.'
     },
     {
       id: 2,
@@ -38,7 +38,7 @@ export const LimitationOfLiability = () => {
       id: 5,
       title: 'No Indirect Liability',
       icon: Ban,
-      content: 'GreenLand shall not be liable for any indirect, incidental, special, or consequential damages arising from the use or inability to use our website.'
+      content: 'Thennattu Nilam shall not be liable for any indirect, incidental, special, or consequential damages arising from the use or inability to use our website.'
     },
     {
       id: 6,
@@ -246,7 +246,7 @@ export const LimitationOfLiability = () => {
           <Mail className="help-info-icon" />
           <div className="help-cell-text">
             <strong>Email Support</strong>
-            <p>support@greenland.com</p>
+            <p>info@thennattunilam.com</p>
           </div>
         </div>
 
