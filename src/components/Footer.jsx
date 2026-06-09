@@ -11,9 +11,36 @@ export const Footer = () => {
       <div className="footer-re-container">
         {/* About Section */}
         <div className="footer-column">
-          
-            <p>Thennattu Nilam </p>
-          
+          <div className="footer-logo-title" style={{ marginBottom: '1rem' }}>
+            <p style={{
+              fontSize: '1.6rem',
+              fontWeight: '800',
+              fontFamily: "'Outfit', 'Playfair Display', 'Georgia', serif",
+              color: '#0f4c23',
+              letterSpacing: '0.5px',
+              margin: 0,
+              textTransform: 'uppercase',
+              display: 'flex',
+              flexDirection: 'column',
+              lineHeight: '1.2'
+            }}>
+              <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <span style={{ color: '#0f4c23' }}>Thennattu</span>
+                <span style={{ color: '#b89047' }}>Nilam</span>
+              </span>
+              <span style={{ 
+                fontSize: '0.65rem', 
+                letterSpacing: '2px', 
+                color: '#b89047', 
+                fontWeight: '600',
+                marginTop: '0.2rem',
+                borderTop: '1px solid #e2e8f0',
+                paddingTop: '0.2rem'
+              }}>
+                REAL ESTATE & DEVELOPMENTS
+              </span>
+            </p>
+          </div>
           <p style={{ fontSize: '0.8rem', lineHeight: '1.6' }}>
             Tamil Nadu's premier platform for vacant land investments, farm lands, and premium plots. We bridge the gap between verified sellers and passionate buyers.
           </p>
