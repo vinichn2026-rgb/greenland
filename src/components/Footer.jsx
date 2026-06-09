@@ -62,7 +62,7 @@ export const Footer = () => {
       </div>
 
       <div className="footer-re-bottom">
-        <span>© {new Date().getFullYear()} GreenLand Land Platform. All rights reserved.</span>
+        <span>© {new Date().getFullYear()} Thennattu Nilam Real Estate & Developments. All rights reserved.</span>
         <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
           <button
             onClick={() => setActivePage('terms')}
