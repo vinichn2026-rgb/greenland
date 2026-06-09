@@ -25,6 +25,18 @@ const HERO_SLIDES = [
     subtitle: "Clear titles, blacktop roads, secure gated communities in Chennai suburbs ready for immediate construction.",
     image: "/images/plot3.png",
     badge: "Residential Layouts & Villa Plots"
+  },
+  {
+    title: "Industrial & Commercial Plots",
+    subtitle: "Strategic commercial land packages near highways and industrial corridors with high potential returns.",
+    image: "/images/plot1.png",
+    badge: "Commercial & Industrial Land"
+  },
+  {
+    title: "Beachfront & Leisure Properties",
+    subtitle: "Premium scenic villa plots and holiday home lands along ECR and scenic coastal roads.",
+    image: "/images/plot4.png",
+    badge: "ECR Beachfront Plots"
   }
 ];
 
