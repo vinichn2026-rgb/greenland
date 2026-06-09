@@ -273,8 +273,8 @@ body {
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.45)), url('/images/green_fields_bg.png');
   background-size: cover;
   background-position: center;
-  min-height: 420px;
-  padding: 2.5rem 2rem 3rem 2rem;
+  min-height: 340px;
+  padding: 1.5rem 2rem 2.5rem 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
