@@ -3,7 +3,7 @@ import { AppContext } from '../context/AppContext';
 import {
   Sprout, Heart, Bell, PlusCircle, MapPin, Phone, Mail
 } from 'lucide-react';
-import logoImg from '../assets/logo.png';
+import logoImg from '../assets/thennattu_nilam_original_logo1.png';
 
 export const Navbar = () => {
   const {

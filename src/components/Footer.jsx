@@ -11,9 +11,9 @@ export const Footer = () => {
       <div className="footer-re-container">
         {/* About Section */}
         <div className="footer-column">
-          <div className="footer-logo-title" style={{ display: 'flex', alignItems: 'center', background: '#ffffff', padding: '6px 12px', borderRadius: '8px', width: 'fit-content', marginBottom: '1rem' }}>
-            <img src={logoImg} alt="Thennattu Nilam Logo" style={{ height: '60px', width: 'auto', objectFit: 'contain' }} />
-          </div>
+          
+            <p>Thennattu Nilam </p>
+          
           <p style={{ fontSize: '0.8rem', lineHeight: '1.6' }}>
             Tamil Nadu's premier platform for vacant land investments, farm lands, and premium plots. We bridge the gap between verified sellers and passionate buyers.
           </p>
