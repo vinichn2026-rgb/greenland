@@ -3416,8 +3416,8 @@ body {
 }
 
 .capsule-select option {
-  background: #0f172a;
-  color: #fff;
+  background: #ffffff;
+  color: var(--primary-green);
 }
 
 .capsule-divider {
