@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { Phone, Mail, MapPin, ChevronRight } from 'lucide-react';
 import { AppContext } from '../context/AppContext';
-import logoImg from '../assets/logo.png';
 
 export const Footer = () => {
   const { setActivePage } = useContext(AppContext);
@@ -25,13 +24,13 @@ export const Footer = () => {
               lineHeight: '1.2'
             }}>
               <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <span style={{ color: '#0f4c23' }}>Thennattu</span>
+                <span style={{ color: '#0f4c23' }}>Thennadu</span>
                 <span style={{ color: '#b89047' }}>Nilam</span>
               </span>
-              <span style={{ 
-                fontSize: '0.65rem', 
-                letterSpacing: '2px', 
-                color: '#b89047', 
+              <span style={{
+                fontSize: '0.65rem',
+                letterSpacing: '2px',
+                color: '#b89047',
                 fontWeight: '600',
                 marginTop: '0.2rem',
                 borderTop: '1px solid #e2e8f0',
@@ -61,10 +60,10 @@ export const Footer = () => {
         <div className="footer-column">
           <h4>Popular Regions</h4>
           <ul className="footer-links">
-            <li><button onClick={() => setActivePage('buyland')} style={{ background: 'none', border: 'none', padding: 0, color: 'inherit', cursor: 'pointer', fontFamily: 'inherit', fontSize: 'inherit', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}><ChevronRight style={{ width: '12px', height: '12px' }} /> Chennai Region</button></li>
-            <li><button onClick={() => setActivePage('buyland')} style={{ background: 'none', border: 'none', padding: 0, color: 'inherit', cursor: 'pointer', fontFamily: 'inherit', fontSize: 'inherit', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}><ChevronRight style={{ width: '12px', height: '12px' }} /> Coimbatore District</button></li>
-            <li><button onClick={() => setActivePage('buyland')} style={{ background: 'none', border: 'none', padding: 0, color: 'inherit', cursor: 'pointer', fontFamily: 'inherit', fontSize: 'inherit', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}><ChevronRight style={{ width: '12px', height: '12px' }} /> Erode & Salem</button></li>
-            <li><button onClick={() => setActivePage('buyland')} style={{ background: 'none', border: 'none', padding: 0, color: 'inherit', cursor: 'pointer', fontFamily: 'inherit', fontSize: 'inherit', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}><ChevronRight style={{ width: '12px', height: '12px' }} /> Pollachi Valley</button></li>
+            <li><button onClick={() => setActivePage('buyland')} style={{ background: 'none', border: 'none', padding: 0, color: 'inherit', cursor: 'pointer', fontFamily: 'inherit', fontSize: 'inherit', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}><ChevronRight style={{ width: '12px', height: '12px' }} /> Ramnad Region</button></li>
+            <li><button onClick={() => setActivePage('buyland')} style={{ background: 'none', border: 'none', padding: 0, color: 'inherit', cursor: 'pointer', fontFamily: 'inherit', fontSize: 'inherit', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}><ChevronRight style={{ width: '12px', height: '12px' }} /> Rameswaram Region</button></li>
+            <li><button onClick={() => setActivePage('buyland')} style={{ background: 'none', border: 'none', padding: 0, color: 'inherit', cursor: 'pointer', fontFamily: 'inherit', fontSize: 'inherit', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}><ChevronRight style={{ width: '12px', height: '12px' }} /> Paramakudi Division</button></li>
+            <li><button onClick={() => setActivePage('buyland')} style={{ background: 'none', border: 'none', padding: 0, color: 'inherit', cursor: 'pointer', fontFamily: 'inherit', fontSize: 'inherit', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}><ChevronRight style={{ width: '12px', height: '12px' }} /> Keelakarai Coast</button></li>
           </ul>
         </div>
 
@@ -74,7 +73,7 @@ export const Footer = () => {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', fontSize: '0.8rem' }}>
             <div className="footer-contact-item">
               <MapPin className="footer-contact-icon" />
-              <span>102, Anna Salai, Guindy, Chennai, Tamil Nadu - 600032</span>
+              <span>102, Anna Salai, Ramnad, Tamil Nadu - 623501</span>
             </div>
             <div className="footer-contact-item">
               <Phone className="footer-contact-icon" />
@@ -82,14 +81,14 @@ export const Footer = () => {
             </div>
             <div className="footer-contact-item">
               <Mail className="footer-contact-icon" />
-              <span>support@greenland.com</span>
+              <span>Thennadunilam@gmail.com</span>
             </div>
           </div>
         </div>
       </div>
 
       <div className="footer-re-bottom">
-        <span>© {new Date().getFullYear()} Thennattu Nilam Real Estate & Developments. All rights reserved.</span>
+        <span>© {new Date().getFullYear()} Thennadu Nilam Real Estate & Developments. All rights reserved.</span>
         <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
           <button
             onClick={() => setActivePage('terms')}

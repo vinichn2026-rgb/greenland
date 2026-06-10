@@ -14,13 +14,13 @@ export const TermsAndConditions = () => {
       id: 1,
       title: 'Introduction',
       icon: FileText,
-      content: 'Welcome to Thennattu Nilam. By accessing or using our website, you agree to comply with and be bound by these Terms & Conditions. Please read them carefully.'
+      content: 'Welcome to Thennadu Nilam. By accessing or using our website, you agree to comply with and be bound by these Terms & Conditions. Please read them carefully.'
     },
     {
       id: 2,
       title: 'Use of Website',
       icon: Globe,
-      content: 'You agree to use Thennattu Nilam only for lawful purposes. You must not use our website in any way that may damage, disable, overburden, or impair the site or interfere with any other party\'s use.'
+      content: 'You agree to use Thennadu Nilam only for lawful purposes. You must not use our website in any way that may damage, disable, overburden, or impair the site or interfere with any other party\'s use.'
     },
     {
       id: 3,
@@ -38,7 +38,7 @@ export const TermsAndConditions = () => {
       id: 5,
       title: 'Payments & Transactions',
       icon: CreditCard,
-      content: 'All payments must be made through secure and trusted channels. Thennattu Nilam is not responsible for any third-party transactions.'
+      content: 'All payments must be made through secure and trusted channels. Thennadu Nilam is not responsible for any third-party transactions.'
     },
     {
       id: 6,
@@ -50,7 +50,7 @@ export const TermsAndConditions = () => {
       id: 7,
       title: 'Limitation of Liability',
       icon: Shield,
-      content: 'Thennattu Nilam and its affiliates will not be liable for any direct, indirect, incidental, consequential, or punitive damages arising out of your access to or use of the website.'
+      content: 'Thennadu Nilam and its affiliates will not be liable for any direct, indirect, incidental, consequential, or punitive damages arising out of your access to or use of the website.'
     },
     {
       id: 8,
@@ -62,7 +62,7 @@ export const TermsAndConditions = () => {
       id: 9,
       title: 'Contact Us',
       icon: Headset,
-      content: 'If you have any questions or concerns regarding these Terms & Conditions, please reach out to our support team at info@thennattunilam.com.'
+      content: 'If you have any questions or concerns regarding these Terms & Conditions, please reach out to our support team at Thennadunilam@gmail.com.'
     }
   ];
 
@@ -96,7 +96,7 @@ export const TermsAndConditions = () => {
         </div>
         <h1 style={{ fontSize: '2.5rem', fontWeight: 800, color: '#0f172a', marginBottom: '0.5rem' }}>Terms & Conditions</h1>
         <p style={{ color: 'var(--text-grey)', fontSize: '0.95rem' }}>
-          Please read these terms and conditions carefully before using Thennattu Nilam.
+          Please read these terms and conditions carefully before using Thennadu Nilam.
         </p>
       </header>
 

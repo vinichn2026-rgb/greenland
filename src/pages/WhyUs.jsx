@@ -25,7 +25,7 @@ export const WhyUs = () => {
     {
       id: 3,
       title: 'Prime Growth Hubs',
-      desc: 'We curate plot listings strictly in high-appreciation zones across Tamil Nadu (such as Oragadam, Kelambakkam, Vandalur) to guarantee high ROI.',
+      desc: 'We curate plot listings strictly in high-appreciation zones in Ramnad to guarantee high ROI.',
       icon: TrendingUp,
       color: '#22c55e'
     },
@@ -238,7 +238,7 @@ export const WhyUs = () => {
           Ready to Invest in Your Future?
         </h2>
         <p style={{ color: 'rgba(255, 255, 255, 0.85)', fontSize: '0.95rem', marginBottom: '1.75rem', maxWidth: '600px', margin: '0 auto 1.75rem auto', lineHeight: '1.5' }}>
-          Browse our collection of DTCP-approved residential plots and agricultural farm lands in Chennai and prime Tamil Nadu regions.
+          Browse our collection of DTCP-approved residential plots and agricultural farm lands in Ramnad.
         </p>
         <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
           <button

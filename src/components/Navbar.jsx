@@ -3,7 +3,7 @@ import { AppContext } from '../context/AppContext';
 import {
   Sprout, Heart, Bell, PlusCircle, MapPin, Phone, Mail
 } from 'lucide-react';
-import logoImg from '../assets/thennattu_nilam_original_logo1.png';
+import logoImg from '../assets/logo-1.png';
 
 export const Navbar = () => {
   const {
@@ -27,9 +27,9 @@ export const Navbar = () => {
             <Phone style={{ width: '12px', height: '12px' }} />
             <span>+91 99426 20101</span>
           </a>
-          <a href="mailto:support@greenland.com">
+          <a href="mailto:Thennadunilam@gmail.com">
             <Mail style={{ width: '12px', height: '12px' }} />
-            <span>support@greenland.com</span>
+            <span>Thennadunilam@gmail.com</span>
           </a>
         </div>
         <div className="top-bar-right">
@@ -68,7 +68,7 @@ export const Navbar = () => {
       {/* Main Curved White Navbar */}
       <nav className="navbar">
         <div className="nav-logo-box" onClick={() => setActivePage('home')}>
-          <img src={logoImg} alt="Thennattu Nilam Logo" className="nav-logo-img" style={{ height: '170px', width: 'auto', objectFit: 'contain' }} />
+          <img src={logoImg} alt="Thennadu Nilam Logo" className="nav-logo-img" style={{ height: '170px', width: 'auto', objectFit: 'contain' }} />
         </div>
 
         <div className="nav-menu">

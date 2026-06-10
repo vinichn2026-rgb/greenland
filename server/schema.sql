@@ -77,10 +77,10 @@ CREATE TABLE IF NOT EXISTS contacts (
 INSERT INTO plots
   (title, location, price, price_val, area, area_val, road, facing, tag, tag_class, land_type, feat_dtcp, feat_rera, feat_corner, feat_gated, feat_road30)
 VALUES
-  ('1200 Sq.ft Plot', 'Oragadam, Chennai',   '₹ 18,00,000', 1800000, '1200', 1200, '30ft Road', 'East Facing',  'DTCP Approved',   'approved', 'Residential Plot', 1, 0, 0, 0, 1),
-  ('2400 Sq.ft Plot', 'Vandalur, Chennai',   '₹ 32,00,000', 3200000, '2400', 2400, '24ft Road', 'North Facing', 'Corner Plot',     'corner',   'Residential Plot', 1, 0, 1, 0, 0),
-  ('1500 Sq.ft Plot', 'Thiruporur, Chennai', '₹ 22,50,000', 2250000, '1500', 1500, '30ft Road', 'East Facing',  'Premium Location', 'premium',  'Residential Plot', 1, 1, 0, 1, 1),
-  ('2000 Sq.ft Plot', 'Kelambakkam, Chennai','₹ 28,50,000', 2850000, '2000', 2000, '24ft Road', 'North Facing', 'Hot Deal',        'hot',      'Residential Plot', 1, 0, 0, 0, 0);
+  ('1200 Sq.ft Plot', 'Keelakarai, Ramnad',   '₹ 18,00,000', 1800000, '1200', 1200, '30ft Road', 'East Facing',  'DTCP Approved',   'approved', 'Residential Plot', 1, 0, 0, 0, 1),
+  ('2400 Sq.ft Plot', 'Rameswaram, Ramnad',   '₹ 32,00,000', 3200000, '2400', 2400, '24ft Road', 'North Facing', 'Corner Plot',     'corner',   'Residential Plot', 1, 0, 1, 0, 0),
+  ('1500 Sq.ft Plot', 'Paramakudi, Ramnad',   '₹ 22,50,000', 2250000, '1500', 1500, '30ft Road', 'East Facing',  'Premium Location', 'premium',  'Residential Plot', 1, 1, 0, 1, 1),
+  ('2000 Sq.ft Plot', 'Devipattinam, Ramnad', '₹ 28,50,000', 2850000, '2000', 2000, '24ft Road', 'North Facing', 'Hot Deal',        'hot',      'Residential Plot', 1, 0, 0, 0, 0);
 
 -- Seed images for each plot (uses static public paths)
 INSERT INTO plot_images (plot_id, image_url, sort_order) VALUES

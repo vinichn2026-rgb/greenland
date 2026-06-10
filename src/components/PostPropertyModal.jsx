@@ -158,7 +158,7 @@ export const PostPropertyModal = () => {
                 <label>Location (City, Area) *</label>
                 <input 
                   type="text" 
-                  placeholder="e.g. Oragadam, Chennai"
+                  placeholder="e.g. Keelakarai, Ramnad"
                   className="filter-text-input"
                   value={formData.location}
                   onChange={(e) => handleInputChange('location', e.target.value)}

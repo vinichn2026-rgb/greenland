@@ -172,16 +172,16 @@ export const BuyLand = () => {
                 onChange={(e) => setLocalLocation(e.target.value)}
               >
                 <option value="">Select Location</option>
-                <option value="Chennai">Chennai</option>
-                <option value="Oragadam">Oragadam</option>
-                <option value="Vandalur">Vandalur</option>
-                <option value="Thiruporur">Thiruporur</option>
-                <option value="Kelambakkam">Kelambakkam</option>
-                <option value="Coimbatore">Coimbatore</option>
-                <option value="Salem">Salem</option>
-                <option value="Erode">Erode</option>
-                <option value="Pollachi">Pollachi</option>
-                <option value="Thanjavur">Thanjavur</option>
+                <option value="Ramanathapuram">Ramanathapuram</option>
+                <option value="Rameswaram">Rameswaram</option>
+                <option value="Paramakudi">Paramakudi</option>
+                <option value="Keelakarai">Keelakarai</option>
+                <option value="Devipattinam">Devipattinam</option>
+                <option value="Sayalgudi">Sayalgudi</option>
+                <option value="Mandapam">Mandapam</option>
+                <option value="Mudukulathur">Mudukulathur</option>
+                <option value="RS Mangalam">RS Mangalam</option>
+                <option value="Kadaladi">Kadaladi</option>
               </select>
             </div>
 
