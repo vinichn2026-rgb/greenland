@@ -2,7 +2,8 @@ import React, { useEffect, useState, useContext } from 'react';
 import { AppContext } from '../context/AppContext';
 import { 
   ShieldCheck, Check, Trash2, User, Phone, MapPin, 
-  Award, Compass, Eye, ShieldAlert, CheckCircle2 
+  Award, Compass, Eye, ShieldAlert, CheckCircle2,
+  Lock, Mail, EyeOff, LogOut
 } from 'lucide-react';
 
 export const Admin = () => {
@@ -12,6 +13,32 @@ export const Admin = () => {
   const [error, setError] = useState('');
   const [selectedPlot, setSelectedPlot] = useState(null);
   const [actionMessage, setActionMessage] = useState('');
+
+  // Admin authentication states
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    return sessionStorage.getItem('isAdminAuthenticated') === 'true';
+  });
+  const [adminEmail, setAdminEmail] = useState('');
+  const [adminPassword, setAdminPassword] = useState('');
+  const [loginError, setLoginError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleAdminLogin = (e) => {
+    e.preventDefault();
+    setLoginError('');
+
+    if (adminEmail.trim().toLowerCase() === 'admin@thennadunilam.com' && adminPassword === 'adminpassword123') {
+      setIsAuthenticated(true);
+      sessionStorage.setItem('isAdminAuthenticated', 'true');
+    } else {
+      setLoginError('Invalid Administrator credentials.');
+    }
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    sessionStorage.removeItem('isAdminAuthenticated');
+  };
 
   const fetchPending = async () => {
     setLoading(true);
@@ -77,18 +104,136 @@ export const Admin = () => {
     }
   };
 
+  if (!isAuthenticated) {
+    return (
+      <div className="buyland-page-wrapper fade-in" style={{ paddingBottom: '3rem', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '80vh' }}>
+        <div className="login-split-card glass-panel" style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', padding: '0', overflow: 'hidden', maxWidth: '1000px', width: '100%', border: '1px solid #e2e8f0', backgroundColor: '#fff', borderRadius: '16px', boxShadow: 'var(--shadow-lg)' }}>
+          {/* Left Panel */}
+          <div 
+            className="login-welcome-banner"
+            style={{ 
+              backgroundImage: `linear-gradient(rgba(15, 76, 35, 0.88), rgba(11, 74, 27, 0.92)), url('/images/green_fields_bg.png')`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              padding: '3rem 2.5rem',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              color: '#fff',
+              borderRight: '1px solid #e2e8f0'
+            }}
+          >
+            <ShieldAlert style={{ width: '48px', height: '48px', color: '#b89047', marginBottom: '1.5rem' }} />
+            <h2 style={{ fontSize: '2.2rem', fontWeight: 800, color: '#fff', marginBottom: '0.5rem' }}>
+              Admin Panel
+            </h2>
+            <p style={{ fontSize: '1rem', color: 'rgba(255, 255, 255, 0.85)', lineHeight: '1.5', marginBottom: '2rem' }}>
+              Access to verify pending mediator listings, approve new land entries, and manage plot inventory.
+            </p>
+            
+            <div style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)', padding: '1rem', borderRadius: '8px', fontSize: '0.8rem', borderLeft: '3px solid #b89047' }}>
+              <strong style={{ color: '#fff', display: 'block', marginBottom: '0.25rem' }}>💡 Default Sandbox Credentials:</strong>
+              <div>Email: <span style={{ fontFamily: 'monospace', color: '#b89047', fontWeight: 700 }}>admin@thennadunilam.com</span></div>
+              <div>Password: <span style={{ fontFamily: 'monospace', color: '#b89047', fontWeight: 700 }}>adminpassword123</span></div>
+            </div>
+          </div>
+
+          {/* Right Panel: Login Form */}
+          <div className="login-form-side" style={{ padding: '3rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#0f172a', marginBottom: '0.5rem' }}>
+              Security Check
+            </h3>
+            <p style={{ fontSize: '0.8rem', color: 'var(--text-grey)', marginBottom: '1.5rem' }}>Please verify your administrator access keys.</p>
+
+            {loginError && (
+              <div className="modal-error-message" style={{ marginBottom: '1.25rem', padding: '0.75rem', borderRadius: '6px' }}>
+                ⚠️ {loginError}
+              </div>
+            )}
+
+            <form onSubmit={handleAdminLogin} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+              <div className="filter-form-field">
+                <label>Admin Email</label>
+                <div className="input-container">
+                  <Mail className="input-icon" style={{ zIndex: 10 }} />
+                  <input 
+                    type="email"
+                    placeholder="admin@thennadunilam.com"
+                    className="form-input"
+                    value={adminEmail}
+                    onChange={(e) => { setAdminEmail(e.target.value); setLoginError(''); }}
+                    required
+                    style={{ paddingLeft: '2.5rem' }}
+                  />
+                </div>
+              </div>
+
+              <div className="filter-form-field">
+                <label>Admin Password</label>
+                <div className="input-container">
+                  <Lock className="input-icon" style={{ zIndex: 10 }} />
+                  <input 
+                    type={showPassword ? 'text' : 'password'}
+                    placeholder="••••••••••••"
+                    className="form-input"
+                    value={adminPassword}
+                    onChange={(e) => { setAdminPassword(e.target.value); setLoginError(''); }}
+                    style={{ paddingRight: '2.5rem', paddingLeft: '2.5rem' }}
+                    required
+                  />
+                  <button 
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    style={{ position: 'absolute', right: '0.75rem', background: 'transparent', border: 'none', cursor: 'pointer', color: 'var(--text-light)', display: 'flex', alignItems: 'center', zIndex: 10 }}
+                  >
+                    {showPassword ? <EyeOff style={{ width: '18px', height: '18px' }} /> : <Eye style={{ width: '18px', height: '18px' }} />}
+                  </button>
+                </div>
+              </div>
+
+              <button type="submit" className="search-submit-btn" style={{ padding: '0.85rem', fontSize: '0.95rem', borderRadius: '6px', marginTop: '0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
+                <ShieldCheck style={{ width: '18px', height: '18px' }} />
+                <span>Verify Access</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="terms-page-container fade-in" style={{ paddingBottom: '4rem' }}>
       
       {/* Header */}
-      <header className="buyland-header" style={{ marginTop: '1.5rem', marginBottom: '2.5rem' }}>
-        <h1 style={{ fontSize: '2.4rem', fontWeight: 800, color: '#0f172a', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-          <ShieldAlert style={{ color: 'var(--primary-green)', width: '32px', height: '32px' }} />
-          Admin Verification Center
-        </h1>
-        <p style={{ color: 'var(--text-grey)', fontSize: '0.95rem', maxWidth: '700px', lineHeight: '1.6', marginTop: '0.4rem' }}>
-          Approve or reject pending real estate listings submitted by registered mediators and agents. Verified listings will automatically go live.
-        </p>
+      <header className="buyland-header" style={{ marginTop: '1.5rem', marginBottom: '2.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+        <div>
+          <h1 style={{ fontSize: '2.4rem', fontWeight: 800, color: '#0f172a', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <ShieldAlert style={{ color: 'var(--primary-green)', width: '32px', height: '32px' }} />
+            Admin Verification Center
+          </h1>
+          <p style={{ color: 'var(--text-grey)', fontSize: '0.95rem', maxWidth: '700px', lineHeight: '1.6', marginTop: '0.4rem' }}>
+            Approve or reject pending real estate listings submitted by registered mediators and agents. Verified listings will automatically go live.
+          </p>
+        </div>
+        
+        <button 
+          onClick={handleLogout}
+          className="filter-reset-btn" 
+          style={{ 
+            display: 'flex', 
+            alignItems: 'center', 
+            gap: '0.5rem', 
+            padding: '0.6rem 1.25rem', 
+            fontSize: '0.85rem', 
+            borderColor: '#ef4444', 
+            color: '#ef4444', 
+            fontWeight: 700 
+          }}
+        >
+          <LogOut style={{ width: '15px', height: '15px' }} />
+          <span>Admin Logout</span>
+        </button>
       </header>
 
       {/* Action Notification Alert */}
