@@ -24,10 +24,10 @@ export const AboutUs = () => {
       <section className="about-main-section" style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: '3rem', alignItems: 'center', marginBottom: '3rem' }}>
         <div className="about-text-content">
           <h1 style={{ fontSize: '2.5rem', fontWeight: 800, color: '#0f172a', marginBottom: '1.5rem' }}>
-            About GreenLand
+            About Thennadu Nilam
           </h1>
           <p style={{ fontSize: '1.05rem', lineHeight: '1.7', color: 'var(--text-grey)', marginBottom: '1.5rem' }}>
-            GreenLand is a trusted land marketplace dedicated to helping customers buy and sell verified empty lands across Tamil Nadu.
+            Thennadu Nilam is a trusted land marketplace dedicated to helping customers buy and sell verified empty lands across Ramnad and surrounding regions.
           </p>
           <p style={{ fontSize: '1.05rem', lineHeight: '1.7', color: 'var(--text-grey)' }}>
             We ensure transparent transactions, verified properties, and the best customer experience.
@@ -36,7 +36,7 @@ export const AboutUs = () => {
 
         {/* Brand Image card */}
         <div className="about-img-box" style={{ height: '300px', borderRadius: '14px', overflow: 'hidden', boxShadow: 'var(--shadow-lg)', border: '1px solid #cbd5e1' }}>
-          <img src="/images/green_fields_bg.png" alt="Tamil Nadu Lands" className="plot-img" />
+          <img src="/images/green_fields_bg.png" alt="Ramnad Lands" className="plot-img" />
         </div>
       </section>
 
@@ -108,7 +108,7 @@ export const AboutUs = () => {
           </div>
           <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0f172a' }}>Our Vision</h3>
           <p style={{ fontSize: '0.85rem', color: 'var(--text-grey)', lineHeight: '1.6' }}>
-            To become Tamil Nadu's most trusted land marketplace.
+            To become Ramnad's most trusted land marketplace.
           </p>
         </div>
 
