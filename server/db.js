@@ -23,26 +23,58 @@ async function initSchema() {
     // ── plots ──────────────────────────────────────────────────────────────
     await conn.query(`
       CREATE TABLE IF NOT EXISTS plots (
-        id           INT AUTO_INCREMENT PRIMARY KEY,
-        title        VARCHAR(255)  NOT NULL,
-        location     VARCHAR(255)  NOT NULL,
-        price        VARCHAR(100)  NOT NULL,
-        price_val    BIGINT        NOT NULL DEFAULT 0,
-        area         VARCHAR(100)  NOT NULL,
-        area_val     INT           NOT NULL DEFAULT 0,
-        road         VARCHAR(100)  NOT NULL DEFAULT '30ft Road',
-        facing       VARCHAR(100)  NOT NULL DEFAULT 'East Facing',
-        tag          VARCHAR(100)  NOT NULL DEFAULT 'DTCP Approved',
-        tag_class    VARCHAR(50)   NOT NULL DEFAULT 'approved',
-        land_type    VARCHAR(100)  NOT NULL DEFAULT 'Residential Plot',
-        feat_dtcp    TINYINT(1)    NOT NULL DEFAULT 0,
-        feat_rera    TINYINT(1)    NOT NULL DEFAULT 0,
-        feat_corner  TINYINT(1)    NOT NULL DEFAULT 0,
-        feat_gated   TINYINT(1)    NOT NULL DEFAULT 0,
-        feat_road30  TINYINT(1)    NOT NULL DEFAULT 0,
-        created_at   DATETIME      NOT NULL DEFAULT CURRENT_TIMESTAMP
+        id             INT AUTO_INCREMENT PRIMARY KEY,
+        title          VARCHAR(255)  NOT NULL,
+        location       VARCHAR(255)  NOT NULL,
+        price          VARCHAR(100)  NOT NULL,
+        price_val      BIGINT        NOT NULL DEFAULT 0,
+        area           VARCHAR(100)  NOT NULL,
+        area_val       INT           NOT NULL DEFAULT 0,
+        road           VARCHAR(100)  NOT NULL DEFAULT '30ft Road',
+        facing         VARCHAR(100)  NOT NULL DEFAULT 'East Facing',
+        tag            VARCHAR(100)  NOT NULL DEFAULT 'DTCP Approved',
+        tag_class      VARCHAR(50)   NOT NULL DEFAULT 'approved',
+        land_type      VARCHAR(100)  NOT NULL DEFAULT 'Residential Plot',
+        feat_dtcp      TINYINT(1)    NOT NULL DEFAULT 0,
+        feat_rera      TINYINT(1)    NOT NULL DEFAULT 0,
+        feat_corner    TINYINT(1)    NOT NULL DEFAULT 0,
+        feat_gated     TINYINT(1)    NOT NULL DEFAULT 0,
+        feat_road30    TINYINT(1)    NOT NULL DEFAULT 0,
+        status         VARCHAR(50)   NOT NULL DEFAULT 'approved',
+        agent_name     VARCHAR(255)  NULL,
+        agent_phone    VARCHAR(255)  NULL,
+        agent_location VARCHAR(255)  NULL,
+        village_name   VARCHAR(255)  NULL,
+        panchayat_name VARCHAR(255)  NULL,
+        district_name  VARCHAR(255)  NULL,
+        created_at     DATETIME      NOT NULL DEFAULT CURRENT_TIMESTAMP
       ) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
     `);
+
+    // Ensure mediator columns exist on pre-existing tables
+    const [columns] = await conn.query('SHOW COLUMNS FROM plots');
+    const columnNames = columns.map(c => c.Field);
+    if (!columnNames.includes('status')) {
+      await conn.query("ALTER TABLE plots ADD COLUMN status VARCHAR(50) NOT NULL DEFAULT 'approved'");
+    }
+    if (!columnNames.includes('agent_name')) {
+      await conn.query("ALTER TABLE plots ADD COLUMN agent_name VARCHAR(255) NULL");
+    }
+    if (!columnNames.includes('agent_phone')) {
+      await conn.query("ALTER TABLE plots ADD COLUMN agent_phone VARCHAR(255) NULL");
+    }
+    if (!columnNames.includes('agent_location')) {
+      await conn.query("ALTER TABLE plots ADD COLUMN agent_location VARCHAR(255) NULL");
+    }
+    if (!columnNames.includes('village_name')) {
+      await conn.query("ALTER TABLE plots ADD COLUMN village_name VARCHAR(255) NULL");
+    }
+    if (!columnNames.includes('panchayat_name')) {
+      await conn.query("ALTER TABLE plots ADD COLUMN panchayat_name VARCHAR(255) NULL");
+    }
+    if (!columnNames.includes('district_name')) {
+      await conn.query("ALTER TABLE plots ADD COLUMN district_name VARCHAR(255) NULL");
+    }
 
     // ── plot_images ────────────────────────────────────────────────────────
     await conn.query(`

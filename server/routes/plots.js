@@ -8,9 +8,9 @@ const router = express.Router();
 // ─────────────────────────────────────────────────────────
 router.get('/', async (req, res) => {
   try {
-    // Fetch all plots
+    // Fetch only approved plots
     const [plots] = await pool.query(
-      'SELECT * FROM plots ORDER BY created_at DESC'
+      "SELECT * FROM plots WHERE status = 'approved' ORDER BY created_at DESC"
     );
 
     // Fetch images for every plot in one query
@@ -72,6 +72,107 @@ router.get('/', async (req, res) => {
   } catch (err) {
     console.error('GET /api/plots error:', err);
     res.status(500).json({ error: 'Failed to fetch plots' });
+  }
+});
+
+// ─────────────────────────────────────────────────────────
+// GET /api/plots/pending  —  list pending plots (admin only)
+// ─────────────────────────────────────────────────────────
+router.get('/pending', async (req, res) => {
+  try {
+    const [plots] = await pool.query(
+      "SELECT * FROM plots WHERE status = 'pending' ORDER BY created_at DESC"
+    );
+
+    const [images] = await pool.query(
+      'SELECT * FROM plot_images ORDER BY plot_id, sort_order'
+    );
+
+    const imgMap = {};
+    images.forEach(img => {
+      if (!imgMap[img.plot_id]) imgMap[img.plot_id] = [];
+      imgMap[img.plot_id].push(img.image_url);
+    });
+
+    const result = plots.map(p => {
+      const urls = imgMap[p.id] || [];
+      const validUrls = urls.filter(url => url && !url.startsWith('blob:'));
+
+      const getFallbackImage = () => {
+        const loc = (p.location || '').toLowerCase();
+        if (loc.includes('keelakarai')) return '/images/plot1.png';
+        if (loc.includes('rameswaram')) return '/images/plot2.png';
+        if (loc.includes('paramakudi')) return '/images/plot3.png';
+        if (loc.includes('devipattinam')) return '/images/plot4.png';
+        const index = ((p.id - 1) % 4) + 1;
+        return `/images/plot${index}.png`;
+      };
+
+      const finalImage = validUrls[0] || getFallbackImage();
+      const finalImagesList = validUrls.length ? validUrls : [finalImage];
+
+      return {
+        id:            p.id,
+        title:         p.title,
+        location:      p.location,
+        price:         p.price,
+        priceVal:      p.price_val,
+        area:          p.area,
+        areaVal:       p.area_val,
+        road:          p.road,
+        facing:        p.facing,
+        tag:           p.tag,
+        tagClass:      p.tag_class,
+        landType:      p.land_type,
+        status:        p.status,
+        agentName:     p.agent_name,
+        agentPhone:    p.agent_phone,
+        agentLocation: p.agent_location,
+        villageName:   p.village_name,
+        panchayatName: p.panchayat_name,
+        districtName:  p.district_name,
+        image:         finalImage,
+        images:        finalImagesList,
+        features: {
+          dtcp:   !!p.feat_dtcp,
+          rera:   !!p.feat_rera,
+          corner: !!p.feat_corner,
+          gated:  !!p.feat_gated,
+          road30: !!p.feat_road30,
+        },
+      };
+    });
+
+    res.json(result);
+  } catch (err) {
+    console.error('GET /api/plots/pending error:', err);
+    res.status(500).json({ error: 'Failed to fetch pending plots' });
+  }
+});
+
+// ─────────────────────────────────────────────────────────
+// PUT /api/plots/:id/approve  —  approve a pending plot
+// ─────────────────────────────────────────────────────────
+router.put('/:id/approve', async (req, res) => {
+  try {
+    await pool.query("UPDATE plots SET status = 'approved' WHERE id = ?", [req.params.id]);
+    res.json({ message: 'Plot approved successfully' });
+  } catch (err) {
+    console.error('Approve plot error:', err);
+    res.status(500).json({ error: 'Failed to approve plot' });
+  }
+});
+
+// ─────────────────────────────────────────────────────────
+// DELETE /api/plots/:id  —  reject/delete a plot
+// ─────────────────────────────────────────────────────────
+router.delete('/:id', async (req, res) => {
+  try {
+    await pool.query("DELETE FROM plots WHERE id = ?", [req.params.id]);
+    res.json({ message: 'Plot rejected and deleted successfully' });
+  } catch (err) {
+    console.error('Delete plot error:', err);
+    res.status(500).json({ error: 'Failed to delete plot' });
   }
 });
 
@@ -142,7 +243,9 @@ router.post('/', async (req, res) => {
   const {
     title, location, price, priceVal = 0,
     area, areaVal = 0, road, facing, tag, tagClass, landType,
-    images = [], features = {}
+    images = [], features = {}, status = 'approved',
+    agentName, agentPhone, agentLocation,
+    villageName, panchayatName, districtName
   } = req.body;
 
   if (!title || !location || !price || !area) {
@@ -156,8 +259,9 @@ router.post('/', async (req, res) => {
     const [result] = await conn.query(
       `INSERT INTO plots
         (title, location, price, price_val, area, area_val, road, facing, tag, tag_class, land_type,
-         feat_dtcp, feat_rera, feat_corner, feat_gated, feat_road30)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+         feat_dtcp, feat_rera, feat_corner, feat_gated, feat_road30, status, agent_name, agent_phone,
+         agent_location, village_name, panchayat_name, district_name)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         title, location, price, priceVal,
         area, areaVal, road || '30ft Road',
@@ -168,6 +272,13 @@ router.post('/', async (req, res) => {
         features.corner ? 1 : 0,
         features.gated  ? 1 : 0,
         features.road30 ? 1 : 0,
+        status || 'approved',
+        agentName || null,
+        agentPhone || null,
+        agentLocation || null,
+        villageName || null,
+        panchayatName || null,
+        districtName || null
       ]
     );
 

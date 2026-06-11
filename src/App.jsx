@@ -16,6 +16,8 @@ import Register from './pages/Register';
 import IceSheet from './pages/IceSheet';
 import Culture from './pages/Culture';
 import PostPropertyModal from './components/PostPropertyModal';
+import Mediator from './pages/Mediator';
+import Admin from './pages/Admin';
 
 // The inner app layout that consumes context
 const AppLayout = () => {
@@ -49,6 +51,10 @@ const AppLayout = () => {
         return <IceSheet />;
       case 'culture':
         return <Culture />;
+      case 'mediator':
+        return <Mediator />;
+      case 'admin':
+        return <Admin />;
       default:
         return <Home />;
     }

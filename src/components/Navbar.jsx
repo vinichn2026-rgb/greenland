@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
 import {
-  Sprout, Heart, Bell, PlusCircle, MapPin, Phone, Mail
+  Sprout, Heart, Bell, PlusCircle, MapPin, Phone, Mail, ShieldCheck
 } from 'lucide-react';
 import logoImg from '../assets/logo-1.png';
 
@@ -91,6 +91,12 @@ export const Navbar = () => {
             <span>Sell Land</span>
           </button>
           <button
+            className={`nav-link ${activePage === 'mediator' ? 'active' : ''}`}
+            onClick={() => setActivePage('mediator')}
+          >
+            <span>Mediator</span>
+          </button>
+          <button
             className={`nav-link ${activePage === 'aboutus' ? 'active' : ''}`}
             onClick={() => setActivePage('aboutus')}
           >
@@ -111,7 +117,7 @@ export const Navbar = () => {
         </div>
 
         <div className="nav-actions">
-          <button className="nav-link" style={{ borderBottom: 'none' }}>
+          <button className="nav-link" style={{ borderBottom: 'none' }} onClick={() => setActivePage('buyland')}>
             <Heart className="link-icon" style={{ fill: savedPlots.length > 0 ? '#ef4444' : 'none', color: savedPlots.length > 0 ? '#ef4444' : 'inherit' }} />
             <span>Saved ({savedPlots.length})</span>
           </button>
@@ -119,6 +125,10 @@ export const Navbar = () => {
           <button className="nav-icon-link" onClick={() => setActivePage('login')} title="Login Account">
             <Bell style={{ width: '20px', height: '20px' }} />
             {notificationsCount > 0 && <span className="badge-num">{notificationsCount}</span>}
+          </button>
+
+          <button className="nav-icon-link" onClick={() => setActivePage('admin')} title="Admin Approval Center">
+            <ShieldCheck style={{ width: '20px', height: '20px', color: activePage === 'admin' ? 'var(--secondary-green)' : 'inherit' }} />
           </button>
 
           <button className="post-property-btn" onClick={() => setPostPropertyModalOpen(true)}>
