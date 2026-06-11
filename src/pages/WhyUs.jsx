@@ -76,10 +76,10 @@ export const WhyUs = () => {
           <span className="breadcrumb-link active">Why Us</span>
         </div>
         <h1 style={{ fontSize: '2.5rem', fontWeight: 800, color: '#0f172a', marginBottom: '0.5rem' }}>
-          Why Choose GreenLand?
+          Why Choose Thennadu Nilam?
         </h1>
         <p style={{ color: 'var(--text-grey)', fontSize: '1rem', maxWidth: '700px', lineHeight: '1.6' }}>
-          We are Tamil Nadu's most trusted vacant land marketplace. We combine legal vetting, zero brokerage, and expert support to deliver a modern, secure land investment experience.
+          We are Ramnad's most trusted vacant land marketplace. We combine legal vetting, zero brokerage, and expert support to deliver a modern, secure land investment experience.
         </p>
       </header>
 
@@ -106,7 +106,7 @@ export const WhyUs = () => {
             A Smarter Way to Buy Land
           </h2>
           <p style={{ color: 'var(--text-grey)', fontSize: '0.9rem' }}>
-            See how GreenLand compares with traditional land brokers.
+            See how Thennadu Nilam compares with traditional land brokers.
           </p>
         </div>
 
@@ -115,7 +115,7 @@ export const WhyUs = () => {
             <thead>
               <tr>
                 <th>Parameters</th>
-                <th className="highlight-col header-highlight">The GreenLand Platform</th>
+                <th className="highlight-col header-highlight">The Thennadu Nilam Platform</th>
                 <th>Traditional Brokers</th>
               </tr>
             </thead>
