@@ -26,29 +26,47 @@ router.get('/', async (req, res) => {
     });
 
     // Merge images into plots and reshape for the frontend
-    const result = plots.map(p => ({
-      id:        p.id,
-      title:     p.title,
-      location:  p.location,
-      price:     p.price,
-      priceVal:  p.price_val,
-      area:      p.area,
-      areaVal:   p.area_val,
-      road:      p.road,
-      facing:    p.facing,
-      tag:       p.tag,
-      tagClass:  p.tag_class,
-      landType:  p.land_type,
-      image:     (imgMap[p.id] && imgMap[p.id][0]) || '/images/plot1.png',
-      images:    imgMap[p.id] || ['/images/plot1.png'],
-      features: {
-        dtcp:   !!p.feat_dtcp,
-        rera:   !!p.feat_rera,
-        corner: !!p.feat_corner,
-        gated:  !!p.feat_gated,
-        road30: !!p.feat_road30,
-      },
-    }));
+    const result = plots.map(p => {
+      const urls = imgMap[p.id] || [];
+      const validUrls = urls.filter(url => url && !url.startsWith('blob:'));
+
+      const getFallbackImage = () => {
+        const loc = (p.location || '').toLowerCase();
+        if (loc.includes('keelakarai')) return '/images/plot1.png';
+        if (loc.includes('rameswaram')) return '/images/plot2.png';
+        if (loc.includes('paramakudi')) return '/images/plot3.png';
+        if (loc.includes('devipattinam')) return '/images/plot4.png';
+        const index = ((p.id - 1) % 4) + 1;
+        return `/images/plot${index}.png`;
+      };
+
+      const finalImage = validUrls[0] || getFallbackImage();
+      const finalImagesList = validUrls.length ? validUrls : [finalImage];
+
+      return {
+        id:        p.id,
+        title:     p.title,
+        location:  p.location,
+        price:     p.price,
+        priceVal:  p.price_val,
+        area:      p.area,
+        areaVal:   p.area_val,
+        road:      p.road,
+        facing:    p.facing,
+        tag:       p.tag,
+        tagClass:  p.tag_class,
+        landType:  p.land_type,
+        image:     finalImage,
+        images:    finalImagesList,
+        features: {
+          dtcp:   !!p.feat_dtcp,
+          rera:   !!p.feat_rera,
+          corner: !!p.feat_corner,
+          gated:  !!p.feat_gated,
+          road30: !!p.feat_road30,
+        },
+      };
+    });
 
     res.json(result);
   } catch (err) {
@@ -70,6 +88,20 @@ router.get('/:id', async (req, res) => {
       [plot.id]
     );
     const imageUrls = images.map(i => i.image_url);
+    const validUrls = imageUrls.filter(url => url && !url.startsWith('blob:'));
+
+    const getFallbackImage = () => {
+      const loc = (plot.location || '').toLowerCase();
+      if (loc.includes('keelakarai')) return '/images/plot1.png';
+      if (loc.includes('rameswaram')) return '/images/plot2.png';
+      if (loc.includes('paramakudi')) return '/images/plot3.png';
+      if (loc.includes('devipattinam')) return '/images/plot4.png';
+      const index = ((plot.id - 1) % 4) + 1;
+      return `/images/plot${index}.png`;
+    };
+
+    const finalImage = validUrls[0] || getFallbackImage();
+    const finalImagesList = validUrls.length ? validUrls : [finalImage];
 
     res.json({
       id:       plot.id,
@@ -84,8 +116,8 @@ router.get('/:id', async (req, res) => {
       tag:      plot.tag,
       tagClass: plot.tag_class,
       landType: plot.land_type,
-      image:    imageUrls[0] || '/images/plot1.png',
-      images:   imageUrls.length ? imageUrls : ['/images/plot1.png'],
+      image:    finalImage,
+      images:   finalImagesList,
       features: {
         dtcp:   !!plot.feat_dtcp,
         rera:   !!plot.feat_rera,
@@ -143,17 +175,28 @@ router.post('/', async (req, res) => {
 
     // Insert up to 5 images
     const validImages = (Array.isArray(images) ? images : []).slice(0, 5);
-    if (validImages.length > 0) {
-      const imgRows = validImages.map((url, i) => [plotId, url, i]);
+    const filteredImages = validImages.filter(url => url && !url.startsWith('blob:'));
+    if (filteredImages.length > 0) {
+      const imgRows = filteredImages.map((url, i) => [plotId, url, i]);
       await conn.query(
         'INSERT INTO plot_images (plot_id, image_url, sort_order) VALUES ?',
         [imgRows]
       );
     } else {
-      // Fallback default image
+      // Fallback default image based on location
+      const loc = (location || '').toLowerCase();
+      let defaultImg = '/images/plot1.png';
+      if (loc.includes('keelakarai')) defaultImg = '/images/plot1.png';
+      else if (loc.includes('rameswaram')) defaultImg = '/images/plot2.png';
+      else if (loc.includes('paramakudi')) defaultImg = '/images/plot3.png';
+      else if (loc.includes('devipattinam')) defaultImg = '/images/plot4.png';
+      else {
+        const index = ((plotId - 1) % 4) + 1;
+        defaultImg = `/images/plot${index}.png`;
+      }
       await conn.query(
         'INSERT INTO plot_images (plot_id, image_url, sort_order) VALUES (?, ?, ?)',
-        [plotId, '/images/plot1.png', 0]
+        [plotId, defaultImg, 0]
       );
     }
 
