@@ -73,7 +73,7 @@ export const Footer = () => {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', fontSize: '0.8rem' }}>
             <div className="footer-contact-item">
               <MapPin className="footer-contact-icon" />
-              <span>102, Anna Salai, Ramnad, Tamil Nadu - 623501</span>
+              <span>13/2928/6, PATTINAMKATHAN NORTH 5th STREET, PATTINAMKATHAN, Ramanathapuram</span>
             </div>
             <div className="footer-contact-item">
               <Phone className="footer-contact-icon" />

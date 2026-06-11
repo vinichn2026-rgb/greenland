@@ -156,7 +156,7 @@ export const Contact = () => {
                 <div>
                   <h4 style={{ fontSize: '0.9rem', fontWeight: 700, color: '#0f172a', marginBottom: '0.15rem' }}>Address</h4>
                   <p style={{ fontSize: '0.85rem', color: 'var(--text-grey)', lineHeight: '1.4' }}>
-                    No: 12, Anna Salai, Ramnad,<br />Tamil Nadu - 623501
+                    13/2928/6, PATTINAMKATHAN NORTH 5th STREET,<br />PATTINAMKATHAN, Ramanathapuram
                   </p>
                 </div>
               </div>
@@ -341,9 +341,9 @@ export const Contact = () => {
                 <MapPin style={{ width: '24px', height: '24px', fill: '#fee2e2' }} />
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.15rem' }}>
-                <strong style={{ fontSize: '0.85rem', fontWeight: 800, color: '#0f172a' }}>GreenLand</strong>
+                <strong style={{ fontSize: '0.85rem', fontWeight: 800, color: '#0f172a' }}>Thennadu Nilam</strong>
                 <span style={{ fontSize: '0.75rem', color: 'var(--text-grey)', lineHeight: '1.3' }}>
-                  No: 12, Anna Salai, Ramnad, Tamil Nadu - 623501
+                  13/2928/6, PATTINAMKATHAN NORTH 5th STREET, PATTINAMKATHAN, Ramanathapuram
                 </span>
               </div>
             </div>
